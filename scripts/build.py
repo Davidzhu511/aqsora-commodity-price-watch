@@ -1,6 +1,7 @@
 """Build a self-contained, offline-readable reference dashboard."""
 
 import argparse
+import json
 import math
 from html import escape
 from pathlib import Path
@@ -39,7 +40,16 @@ def chart(data):
     return "\n".join(parts)
 
 
-def render(data):
+def render(data, monitoring=None):
+    monitor_section = ""
+    if monitoring:
+        checks = []
+        family_names = {"mongolia_lignite": "蒙古国褐煤", "indonesia_hba": "印尼 HBA"}
+        for family, source in monitoring["sources"].items():
+            status = "本次检查正常" if source["status"] == "ok" else "检查异常，保留已核验价格"
+            pending = ''.join(f'<li><a href="{escape(item["url"], quote=True)}">待核验公告 · {escape(item["published_on"])}</a></li>' for item in source.get("pending", []))
+            checks.append(f'<h3>{family_names[family]} · {status}</h3><p class="muted">最近成功检查 {escape(source.get("last_success_utc", "尚未成功"))}</p><p>{escape(source["message"])}</p><ul>{pending}</ul>')
+        monitor_section = f'<h2>官方公告监测</h2><article><p>最近检查 {escape(monitoring["checked_at_utc"])}（UTC）</p><p class="muted">每天 07:17、19:17 UTC 自动检查。新公告先列入待核验清单，人工审核并通过测试后更新价格。</p>{"".join(checks)}</article>'
     sections = []
     for series_id, series in data["series"].items():
         rows = history(data, series_id)
@@ -67,12 +77,12 @@ def render(data):
 </style></head><body><main>
 <header><p class="eyebrow">AQSora / Commodity Price Watch</p><h1>煤炭与腐殖酸价格观察</h1><p>用可追溯的公开价格，建立贸易研究的起点。</p><p class="muted">历史公告快照 · 数据人工核验于 {data['verified_on']} · 实时行情尚未接入</p></header>
 <div class="notice">本页展示官方参考价格。AQSora 实际销售报价尚待询价确认。煤质、热值口径、税费、交货地与物流成本需单独核对后，才能用于商业测算。</div>
-<div class="stats"><div><strong>{len(data['records'])}</strong><span>已核验价格记录</span></div><div><strong>{len(data['sources'])}</strong><span>官方公告来源</span></div><div><strong>人工审核</strong><span>数据更新方式</span></div></div>
+<div class="stats"><div><strong>{len(data['records'])}</strong><span>已核验价格记录</span></div><div><strong>{len(data['sources'])}</strong><span>官方公告来源</span></div><div><strong>定期监测</strong><span>新增价格人工审核</span></div></div>{monitor_section}
 <h2>蒙古国褐煤 · 历史变化</h2><div class="chart"><p class="muted">按公告月份排列，反映上月均价。单位 USD/t。各曲线对应不同煤质规格。</p>{chart(data)}</div>
 <h2>各品种记录与来源</h2>{''.join(sections)}
 <h2>付费指数与实际询价</h2><article><p><strong>ICI 4 / ICI 5 / API 2 / Platts CIF ARA</strong> · 待取得授权数据</p><p><strong>腐殖酸原料及加工品</strong> · 待同规格供应商询价</p><p class="muted">比较腐殖酸报价时，需同时记录干基含量、检测方法、水分、溶解性、杂质、数量及交货条件。未录入的报价保持为空。</p></article>
 <h2>日期与计算口径</h2><article><p>涨跌幅按同一序列相邻两条已收录记录计算。首条记录显示为空。HBA 当前仅收录一期，尚无库内历史涨跌幅。GAR 与 NAR 保留各自口径。</p><ul>{''.join(sources)}</ul></article>
-<footer>独立研究项目 · 初始化包重建版，2026-11-09<br>原 ZIP 无法取得，本版依据原对话的功能范围重建，价格已重新对照官方公告。自动抓取与实时更新尚未启用。</footer>
+<footer>独立研究项目 · 初始化包重建版，2026-11-09<br>原 ZIP 无法取得，本版依据原对话的功能范围重建，价格已重新对照官方公告。官方公告定期监测，价格经人工审核后入库。完整数据与运行记录见 <a href="https://github.com/Davidzhu511/aqsora-commodity-price-watch">GitHub 仓库</a>。</footer>
 </main></body></html>\n'''
 
 
@@ -81,7 +91,9 @@ if __name__ == "__main__":
     parser.add_argument("--check", action="store_true", help="Fail when the committed dashboard is out of date")
     args = parser.parse_args()
     output = ROOT / "docs/index.html"
-    rendered = render(load_data())
+    status_path = ROOT / "data/monitoring.json"
+    monitoring = json.loads(status_path.read_text(encoding="utf-8")) if status_path.exists() else None
+    rendered = render(load_data(), monitoring)
     if args.check:
         if not output.exists() or output.read_text(encoding="utf-8") != rendered:
             raise SystemExit("Dashboard differs from data. Run python scripts/build.py")

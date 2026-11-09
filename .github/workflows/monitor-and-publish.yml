@@ -1,0 +1,77 @@
+name: Monitor official sources and publish
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '17 7,19 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: aqsora-monitor-and-publish
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests -v
+      - name: Check official announcements
+        run: python scripts/monitor.py
+      - run: python scripts/build.py
+      - run: python scripts/prices.py && python scripts/build.py --check
+      - name: Save monitoring status and dashboard
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/monitoring.json docs/index.html
+          if ! git diff --cached --quiet; then
+            git commit -m 'Update official-source monitoring status'
+            git push origin HEAD:main
+          fi
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publish verified dashboard
+        id: deployment
+        uses: actions/deploy-pages@v4
+  health:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Report source failures
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          state = json.loads(Path('data/monitoring.json').read_text())
+          errors = [name for name, source in state['sources'].items() if source['status'] != 'ok']
+          if errors:
+              raise SystemExit('Source checks failed: ' + ', '.join(errors))
+          print('All official-source checks passed')
+          PY

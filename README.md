@@ -8,7 +8,7 @@
 
 ## 查看与验证
 
-直接下载并用浏览器打开 `docs/index.html` 即可离线查看。网页自带样式和图表，无需安装依赖。
+在线查看 [AQSora 价格看板](https://davidzhu511.github.io/aqsora-commodity-price-watch/)。也可下载并用浏览器打开 `docs/index.html` 离线查看。
 
 使用 Python 3.11 或更新版本，在仓库根目录执行以下命令。全部功能仅使用标准库。
 
@@ -18,7 +18,17 @@ python3 -m unittest discover -s tests -v
 python3 scripts/build.py --check
 ```
 
-更新数据后运行 `python3 scripts/build.py` 重建网页，再运行测试与 `--check`。GitHub Actions 在推送、拉取请求或手动触发时执行同样的校验。价格更新采用人工核验，定时抓取和 GitHub Pages 托管尚未启用。
+更新数据后运行 `python3 scripts/build.py` 重建网页，再运行测试与 `--check`。GitHub Actions 在推送、拉取请求或手动触发时执行校验。
+
+## 自动监测与发布
+
+每天 07:17、19:17 UTC 检查官方公告，对应柏林冬令时 08:17、20:17，夏令时 09:17、21:17。GitHub 定时任务可能稍有延迟。`Monitor official sources and publish` 工作流也可手动启动，每次推送 main 会运行一次。
+
+程序复核库内最近一期的官方价格和发布日期，并扫描蒙古国英文价格目录最近 6 条公告、印尼新闻目录前 3 页中的相关条目。新公告进入待核验清单，审核来源、规格和期间并通过测试后再录入 `data/prices.json`。监测覆盖上述官方页面，付费指数与商业报价仍需合法获取。
+
+`data/monitoring.json` 保存检查时间、最近成功时间、源页面摘要哈希、异常和待核验链接。访问失败、页面结构变化或官方价格与已存数据不一致时，保留原价格并更新看板异常状态。检查成功只表示本次监测覆盖的页面已通过核对。
+
+发布工作流先运行测试，再检查官方页面、生成看板并提交监测状态，随后部署到 GitHub Pages。异常状态也会发布，最后的健康检查会将运行标记为失败。工作流只写入本仓库的监测状态和看板，价格入库继续通过人工审核。
 
 ## 目录
 
@@ -28,6 +38,8 @@ python3 scripts/build.py --check
 | `docs/index.html` | 可离线打开的中文静态看板 |
 | `scripts/prices.py` | 数据校验和同序列涨跌幅计算 |
 | `scripts/build.py` | 从已校验数据生成看板 |
+| `scripts/monitor.py` | 官方公告发现、价格复核及异常状态 |
+| `data/monitoring.json` | 最近检查结果与待核验公告 |
 | `tests/test_prices.py` | 数据真实性约束、计算与输出回归测试 |
 | `templates/` | 付费指数与供应商询价空白模板 |
 | `docs/data-notes.md` | 来源核验及日期口径说明 |
@@ -42,7 +54,7 @@ python3 scripts/build.py --check
 
 ## 更新数据
 
-先核对官方原文的数值、单位、热值口径、规格和日期。将新公告加入 `sources`，将价格加入 `records`，更新实际人工核验日期 `verified_on`。若标准、单位或交货条件发生变化，应新增序列，避免将不同口径拼接。
+先核对官方原文的数值、单位、热值口径、规格和日期。将新公告加入 `sources`，将价格加入 `records`，更新实际人工核验日期 `verified_on`。运行 `python3 scripts/monitor.py` 后，已录入的来源会从待核验清单移除。若标准、单位或交货条件发生变化，应新增序列，避免将不同口径拼接。
 
 校验会拒绝重复或重叠期间、非正数、空值、无限值、未来发布日期和来源类别错配。新增官方域名需要先在校验器中审核允许。结构校验不能代替人工核对公告原文。
 
