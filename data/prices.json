@@ -1,0 +1,231 @@
+{
+  "schema_version": 1,
+  "verified_on": "2026-11-09",
+  "provenance": "Reconstructed from public official sources on 2026-11-09 because the prior conversation ZIP was inaccessible.",
+  "series": {
+    "mn_lignite_low": {
+      "name": "蒙古国低水分褐煤",
+      "family": "mongolia_lignite",
+      "kind": "official_reference",
+      "unit": "USD/t",
+      "basis": "NAR",
+      "specification": "原表 Qnet,ar >3500–4000 kcal/kg；全水分 ≤30%；干基硫 ≤1.50%；挥发分 Vdaf >37%。详见原公告全部指标。",
+      "delivery_basis": "蒙古国矿产品出口官方参考口径；公告未明确统一交货地点。",
+      "caution": "规格相符需逐项核验。原表总要求列与褐煤行的硫分边界写法略有差别，应以官方解释为准。"
+    },
+    "mn_lignite_wet": {
+      "name": "蒙古国湿褐煤",
+      "family": "mongolia_lignite",
+      "kind": "official_reference",
+      "unit": "USD/t",
+      "basis": "NAR",
+      "specification": "Qnet,ar ≤3500 kcal/kg；全水分 >30%–40%；干基硫 ≤1.50%；挥发分 Vdaf >37%。详见原公告全部指标。",
+      "delivery_basis": "蒙古国矿产品出口官方参考口径；公告未明确统一交货地点。",
+      "caution": "规格相符需逐项核验。原表总要求列与褐煤行的硫分边界写法略有差别，应以官方解释为准。"
+    },
+    "mn_lignite_high": {
+      "name": "蒙古国高水分褐煤",
+      "family": "mongolia_lignite",
+      "kind": "official_reference",
+      "unit": "USD/t",
+      "basis": "NAR",
+      "specification": "Qnet,ar ≤3500 kcal/kg；全水分 >40%；干基硫 ≤1.50%；挥发分 Vdaf >37%。详见原公告全部指标。",
+      "delivery_basis": "蒙古国矿产品出口官方参考口径；公告未明确统一交货地点。",
+      "caution": "规格相符需逐项核验。原表总要求列与褐煤行的硫分边界写法略有差别，应以官方解释为准。"
+    },
+    "hba": {
+      "name": "印尼 HBA",
+      "family": "indonesia_hba",
+      "kind": "official_reference",
+      "unit": "USD/t",
+      "basis": "GAR",
+      "specification": "主类，公告说明用于 >6000 kcal/kg GAR 煤种",
+      "delivery_basis": "印尼 FOB Vessel 政府参考口径",
+      "caution": "硫分、灰分、水分等规格仍需核对部长决定附件；与蒙古国内陆褐煤的适用性需要另外评估。"
+    },
+    "hba_i": {
+      "name": "印尼 HBA I",
+      "family": "indonesia_hba",
+      "kind": "official_reference",
+      "unit": "USD/t",
+      "basis": "GAR",
+      "specification": "5300 kcal/kg GAR",
+      "delivery_basis": "印尼 FOB Vessel 政府参考口径",
+      "caution": "硫分、灰分、水分等规格仍需核对部长决定附件；与蒙古国内陆褐煤的适用性需要另外评估。"
+    },
+    "hba_ii": {
+      "name": "印尼 HBA II",
+      "family": "indonesia_hba",
+      "kind": "official_reference",
+      "unit": "USD/t",
+      "basis": "GAR",
+      "specification": "4100 kcal/kg GAR",
+      "delivery_basis": "印尼 FOB Vessel 政府参考口径",
+      "caution": "硫分、灰分、水分等规格仍需核对部长决定附件；与蒙古国内陆褐煤的适用性需要另外评估。"
+    },
+    "hba_iii": {
+      "name": "印尼 HBA III",
+      "family": "indonesia_hba",
+      "kind": "official_reference",
+      "unit": "USD/t",
+      "basis": "GAR",
+      "specification": "3400 kcal/kg GAR",
+      "delivery_basis": "印尼 FOB Vessel 政府参考口径",
+      "caution": "硫分、灰分、水分等规格仍需核对部长决定附件；与蒙古国内陆褐煤的适用性需要另外评估。"
+    }
+  },
+  "sources": {
+    "mn_2026-07": {
+      "title": "蒙古国 2026-07 矿产品出口参考价公告",
+      "publisher": "Mineral Resources and Petroleum Authority of Mongolia",
+      "family": "mongolia_lignite",
+      "url": "https://mrpam.gov.mn/en/news/international-market-price-information-for-exported-mineral-products-63",
+      "published_on": "2026-07-09",
+      "issue_date": "2026-07-09",
+      "period_start": "2026-07-01",
+      "period_end": "2026-07-31",
+      "observation_start": "2026-06-01",
+      "observation_end": "2026-06-30",
+      "verification_method": "人工核对官方公告的褐煤三行、单位及期间。",
+      "note": "按前一个月均价编制。"
+    },
+    "mn_2026-08": {
+      "title": "蒙古国 2026-08 矿产品出口参考价公告",
+      "publisher": "Mineral Resources and Petroleum Authority of Mongolia",
+      "family": "mongolia_lignite",
+      "url": "https://mrpam.gov.mn/news/international-market-price-information-for-exported-mineral-products-64",
+      "published_on": "2026-08-11",
+      "issue_date": "2026-08-10",
+      "period_start": "2026-08-01",
+      "period_end": "2026-08-31",
+      "observation_start": "2026-07-01",
+      "observation_end": "2026-07-31",
+      "verification_method": "人工核对官方公告的褐煤三行、单位及期间。",
+      "note": "正文署期为 8 月 10 日，网页发布时间为 8 月 11 日。"
+    },
+    "mn_2026-09": {
+      "title": "蒙古国 2026-09 矿产品出口参考价公告",
+      "publisher": "Mineral Resources and Petroleum Authority of Mongolia",
+      "family": "mongolia_lignite",
+      "url": "https://mrpam.gov.mn/en/news/international-market-price-information-for-exported-mineral-products-65",
+      "published_on": "2026-09-09",
+      "issue_date": "2026-09-09",
+      "period_start": "2026-09-01",
+      "period_end": "2026-09-30",
+      "observation_start": "2026-08-01",
+      "observation_end": "2026-08-31",
+      "verification_method": "人工核对官方公告的褐煤三行、单位及期间。",
+      "note": "按前一个月均价编制。"
+    },
+    "mn_2026-10": {
+      "title": "蒙古国 2026-10 矿产品出口参考价公告",
+      "publisher": "Mineral Resources and Petroleum Authority of Mongolia",
+      "family": "mongolia_lignite",
+      "url": "https://mrpam.gov.mn/en/news/international-market-price-information-for-exported-mineral-products-66",
+      "published_on": "2026-10-09",
+      "issue_date": "2026-10-09",
+      "period_start": "2026-10-01",
+      "period_end": "2026-10-31",
+      "observation_start": "2026-09-01",
+      "observation_end": "2026-09-30",
+      "verification_method": "人工核对官方公告的褐煤三行、单位及期间。",
+      "note": "按前一个月均价编制。"
+    },
+    "id_hba_2026_11_1": {
+      "title": "印尼 HBA 2026 年 11 月第一期公告",
+      "publisher": "Kementerian ESDM RI",
+      "family": "indonesia_hba",
+      "url": "https://esdm.go.id/id/media-center/arsip-berita/hba-november-turun-tipis-harga-batu-bara-kalori-rendah-justru-naik",
+      "published_on": "2026-11-03",
+      "issue_date": "2026-11-03",
+      "period_start": "2026-11-01",
+      "period_end": "2026-11-14",
+      "observation_start": "2026-09-08",
+      "observation_end": "2026-10-07",
+      "verification_method": "人工核对 ESDM 新闻公告中的四个价格与适用期间。",
+      "note": "新闻公告说明本期交易采样窗口；未逐项复核部长决定附件，完整煤质规格应查附件。"
+    }
+  },
+  "records": [
+    {
+      "series_id": "mn_lignite_low",
+      "source_id": "mn_2026-07",
+      "value": 35.73
+    },
+    {
+      "series_id": "mn_lignite_wet",
+      "source_id": "mn_2026-07",
+      "value": 30.97
+    },
+    {
+      "series_id": "mn_lignite_high",
+      "source_id": "mn_2026-07",
+      "value": 28.59
+    },
+    {
+      "series_id": "mn_lignite_low",
+      "source_id": "mn_2026-08",
+      "value": 35
+    },
+    {
+      "series_id": "mn_lignite_wet",
+      "source_id": "mn_2026-08",
+      "value": 30.33
+    },
+    {
+      "series_id": "mn_lignite_high",
+      "source_id": "mn_2026-08",
+      "value": 28
+    },
+    {
+      "series_id": "mn_lignite_low",
+      "source_id": "mn_2026-09",
+      "value": 37.96
+    },
+    {
+      "series_id": "mn_lignite_wet",
+      "source_id": "mn_2026-09",
+      "value": 32.9
+    },
+    {
+      "series_id": "mn_lignite_high",
+      "source_id": "mn_2026-09",
+      "value": 30.37
+    },
+    {
+      "series_id": "mn_lignite_low",
+      "source_id": "mn_2026-10",
+      "value": 49.37
+    },
+    {
+      "series_id": "mn_lignite_wet",
+      "source_id": "mn_2026-10",
+      "value": 42.79
+    },
+    {
+      "series_id": "mn_lignite_high",
+      "source_id": "mn_2026-10",
+      "value": 39.5
+    },
+    {
+      "series_id": "hba",
+      "source_id": "id_hba_2026_11_1",
+      "value": 125.6
+    },
+    {
+      "series_id": "hba_i",
+      "source_id": "id_hba_2026_11_1",
+      "value": 97.85
+    },
+    {
+      "series_id": "hba_ii",
+      "source_id": "id_hba_2026_11_1",
+      "value": 69.28
+    },
+    {
+      "series_id": "hba_iii",
+      "source_id": "id_hba_2026_11_1",
+      "value": 46.64
+    }
+  ]
+}

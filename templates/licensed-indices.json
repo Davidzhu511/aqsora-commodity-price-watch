@@ -1,0 +1,9 @@
+{
+  "instructions": "仅在取得数据与再发布授权后录入。空值表示尚未取得数据。模板不参与公开看板构建。将实际授权数据保存在 private/，发布前单独审核。",
+  "entries": [
+    {"name": "ICI 4", "value": null, "currency": null, "unit": null, "price_date": null, "specification": null, "delivery_basis": null, "source_url": null, "license_reference": null, "redistribution_allowed": false},
+    {"name": "ICI 5", "value": null, "currency": null, "unit": null, "price_date": null, "specification": null, "delivery_basis": null, "source_url": null, "license_reference": null, "redistribution_allowed": false},
+    {"name": "API 2", "value": null, "currency": null, "unit": null, "price_date": null, "specification": null, "delivery_basis": null, "source_url": null, "license_reference": null, "redistribution_allowed": false},
+    {"name": "Platts CIF ARA", "value": null, "currency": null, "unit": null, "price_date": null, "specification": null, "delivery_basis": null, "source_url": null, "license_reference": null, "redistribution_allowed": false}
+  ]
+}
