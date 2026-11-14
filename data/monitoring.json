@@ -1,27 +1,27 @@
 {
   "schema_version": 1,
-  "checked_at_utc": "2026-11-14T00:19:52+00:00",
+  "checked_at_utc": "2026-11-14T14:08:17+00:00",
   "schedule_utc": "07:17, 19:17 daily",
   "sources": {
     "mongolia_lignite": {
       "status": "ok",
       "latest_source_url": "https://mrpam.gov.mn/en/news/international-market-price-information-for-exported-mineral-products-66",
       "latest_period_end": "2026-10-31",
-      "source_sha256": "911cca0405b48cde6145d4d2ab19cad572fa46f3023a42703a7cdfee663b34b5",
+      "source_sha256": "6850cb201a5dbf5c1baacb74e95348bb88278d242aa20ff33b022412236be0ba",
       "pending": [],
       "message": "已检查官方目录并复核库内最近一期价格。新公告经审核后入库。",
-      "last_attempt_utc": "2026-11-14T00:19:52+00:00",
-      "last_success_utc": "2026-11-14T00:19:52+00:00"
+      "last_attempt_utc": "2026-11-14T14:08:17+00:00",
+      "last_success_utc": "2026-11-14T14:08:17+00:00"
     },
     "indonesia_hba": {
       "status": "ok",
       "latest_source_url": "https://esdm.go.id/id/media-center/arsip-berita/hba-november-turun-tipis-harga-batu-bara-kalori-rendah-justru-naik",
       "latest_period_end": "2026-11-14",
-      "source_sha256": "a041a8d9a9c435f1a35933fa5f0a732f0338a1082d439d243f512311d838c2f8",
+      "source_sha256": "3bb250632b7bd83c30baf5b06be8a091bc062f4e378cb9de56bbeb6195257bd1",
       "pending": [],
       "message": "已检查官方目录并复核库内最近一期价格。新公告经审核后入库。",
-      "last_attempt_utc": "2026-11-14T00:19:52+00:00",
-      "last_success_utc": "2026-11-14T00:19:52+00:00"
+      "last_attempt_utc": "2026-11-14T14:08:17+00:00",
+      "last_success_utc": "2026-11-14T14:08:17+00:00"
     }
   }
 }
