@@ -1,23 +1,29 @@
 {
   "schema_version": 1,
-  "checked_at_utc": "2026-11-16T16:59:21+00:00",
+  "checked_at_utc": "2026-11-17T02:28:22+00:00",
   "schedule_utc": "07:17, 19:17 daily",
   "sources": {
     "mongolia_lignite": {
       "status": "ok",
       "latest_source_url": "https://mrpam.gov.mn/en/news/international-market-price-information-for-exported-mineral-products-66",
       "latest_period_end": "2026-10-31",
-      "source_sha256": "a1fd2b269f08dcb4171126aee0b2223a543fbf6574d82f7a3a57e7d38672daaa",
-      "pending": [],
+      "source_sha256": "59a1d778e502cebefed39cfbbc7bfa08b2e383248a8f3ffed19428a1d518e8c4",
+      "pending": [
+        {
+          "url": "https://mrpam.gov.mn/en/news/international-market-price-information-for-exported-mineral-products-67",
+          "published_on": "2026-11-12",
+          "status": "pending_review"
+        }
+      ],
       "message": "已检查官方目录并复核库内最近一期价格。新公告经审核后入库。",
-      "last_attempt_utc": "2026-11-16T16:59:21+00:00",
-      "last_success_utc": "2026-11-16T16:59:21+00:00"
+      "last_attempt_utc": "2026-11-17T02:28:22+00:00",
+      "last_success_utc": "2026-11-17T02:28:22+00:00"
     },
     "indonesia_hba": {
       "status": "ok",
       "latest_source_url": "https://esdm.go.id/id/media-center/arsip-berita/hba-november-turun-tipis-harga-batu-bara-kalori-rendah-justru-naik",
       "latest_period_end": "2026-11-14",
-      "source_sha256": "7d85189699cd188ef7ebae9bcd135de4b916f3b50124ff403db45e2841c760a2",
+      "source_sha256": "f5307ed02114f618166cfd57f5763aed447bfcde1d4c80a03a7bfd3cabe6744e",
       "pending": [
         {
           "url": "https://esdm.go.id/id/media-center/arsip-berita/hba-periode-kedua-november-2026-naik-415-persen-jadi-usd-13081-per-ton",
@@ -26,8 +32,8 @@
         }
       ],
       "message": "已检查官方目录并复核库内最近一期价格。新公告经审核后入库。",
-      "last_attempt_utc": "2026-11-16T16:59:21+00:00",
-      "last_success_utc": "2026-11-16T16:59:21+00:00"
+      "last_attempt_utc": "2026-11-17T02:28:22+00:00",
+      "last_success_utc": "2026-11-17T02:28:22+00:00"
     }
   }
 }
