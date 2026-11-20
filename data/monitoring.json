@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "checked_at_utc": "2026-11-20T01:15:45+00:00",
+  "checked_at_utc": "2026-11-20T16:08:21+00:00",
   "schedule_utc": "07:17, 19:17 daily",
   "sources": {
     "mongolia_lignite": {
       "status": "ok",
       "latest_source_url": "https://mrpam.gov.mn/en/news/international-market-price-information-for-exported-mineral-products-66",
       "latest_period_end": "2026-10-31",
-      "source_sha256": "2158e15822df000db41084bf516a2befabc51e763c0464923011aa5e277722b9",
+      "source_sha256": "04950fe2bf0a43e322510a4fcdd109266b5684272cd08c07111a7341fea90279",
       "pending": [
         {
           "url": "https://mrpam.gov.mn/en/news/international-market-price-information-for-exported-mineral-products-67",
@@ -16,14 +16,14 @@
         }
       ],
       "message": "已检查官方目录并复核库内最近一期价格。新公告经审核后入库。",
-      "last_attempt_utc": "2026-11-20T01:15:45+00:00",
-      "last_success_utc": "2026-11-20T01:15:45+00:00"
+      "last_attempt_utc": "2026-11-20T16:08:21+00:00",
+      "last_success_utc": "2026-11-20T16:08:21+00:00"
     },
     "indonesia_hba": {
       "status": "ok",
       "latest_source_url": "https://esdm.go.id/id/media-center/arsip-berita/hba-november-turun-tipis-harga-batu-bara-kalori-rendah-justru-naik",
       "latest_period_end": "2026-11-14",
-      "source_sha256": "a14ad00efb2d50e841fd10b9ca0e1f63aba4649c36732c383b6bbb01e8613787",
+      "source_sha256": "c00fda0689601f290bee228ed97b1e2d7fb41c73592555ef43983f62b1740382",
       "pending": [
         {
           "url": "https://esdm.go.id/id/media-center/arsip-berita/hba-periode-kedua-november-2026-naik-415-persen-jadi-usd-13081-per-ton",
@@ -32,8 +32,8 @@
         }
       ],
       "message": "已检查官方目录并复核库内最近一期价格。新公告经审核后入库。",
-      "last_attempt_utc": "2026-11-20T01:15:45+00:00",
-      "last_success_utc": "2026-11-20T01:15:45+00:00"
+      "last_attempt_utc": "2026-11-20T16:08:21+00:00",
+      "last_success_utc": "2026-11-20T16:08:21+00:00"
     }
   }
 }
